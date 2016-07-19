@@ -1,0 +1,77 @@
+//#EditorFriendly
+
+//#ShaderName
+	Properties {
+_Color ("Diffuse Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_SpecColor ("Specular Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
+//#ShaderProperties
+	}
+
+	Category {
+		SubShader { 
+//#Blend
+//#CatTags
+
+//#LOD
+
+//#GrabPass
+		CGPROGRAM
+//#LightingModelTag
+
+//#TargetSM
+
+//#UnlitCGDefs
+float4 _Color;
+		struct Input {
+//#UVDefs
+		INTERNAL_DATA
+		};
+		
+		void vert (inout appdata_full v, out Input o) {
+//#DeferredVertexBody
+//#DeferredVertexEnd
+		}
+		void surf (Input IN, inout SurfaceShaderFusion o) {
+			float4 normal = float4(0.0,0.0,1.0,0.0);
+			float3 emissive = 0.0;
+			float3 specular = 1.0;
+			float gloss = 1.0;
+			float3 diffuse = 1.0;
+			float alpha = 1.0;
+//#PreFragBody
+//#FragBody
+			
+			o.Albedo = diffuse.rgb*_Color;
+			#ifdef SHADER_API_OPENGL
+			o.Albedo = max(float3(0,0,0),o.Albedo);
+			#endif
+			
+			o.Emission = emissive*_Color;
+			#ifdef SHADER_API_OPENGL
+			o.Emission = max(float3(0,0,0),o.Emission);
+			#endif
+			
+			o.GlossColor = specular*_SpecColor;
+			#ifdef SHADER_API_OPENGL
+			o.GlossColor = max(float3(0,0,0),o.GlossColor);
+			#endif
+			
+			o.Alpha = alpha*_Color.a;
+			#ifdef SHADER_API_OPENGL
+			o.Alpha = max(float3(0,0,0),o.Alpha);
+			#endif
+			
+			o.Specular = gloss;
+			#ifdef SHADER_API_OPENGL
+			o.Specular = max(float3(0,0,0),o.Specular);
+			#endif
+			
+			o.Normal = normal;
+//#FragEnd
+		}
+		ENDCG
+		}
+	}
+//#Fallback
+}

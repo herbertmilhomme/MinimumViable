@@ -1,0 +1,23 @@
+ //use custom lighting functions
+ #pragma surface surf ShaderFusion
+ 
+ //custom surface output structure
+ struct SurfaceShaderFusion {
+	half3 Albedo;
+	half3 Normal;
+	half3 Emission;
+	half Specular;
+	half3 GlossColor; //Gloss is now three-channel
+	half Alpha;
+ };
+ 
+   half4 LightingShaderFusion (SurfaceShaderFusion s, half3 lightDir, half atten)
+  {
+      lightDir = normalize(lightDir);
+      half NdotL = dot (s.Normal, lightDir);
+      half diff = NdotL * 0.5 + 0.5;
+      half4 c;
+      c.rgb = s.Albedo * _LightColor0.rgb * (diff * atten * 2);
+      c.a = s.Alpha;
+      return c;
+  }
