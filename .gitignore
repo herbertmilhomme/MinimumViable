@@ -1,4 +1,8 @@
 [Ee]verglades([Nn]ew)/[Ll]ibrary/
+# [Ee]verglades([Nn]ew)/[Aa]ssets/[Ss]tandard [Aa]ssets (Mobile) [Ll]ibrary/
+[Mm]inimum3/[Ll]ibrary/ShaderCache/
+[Mm]inimum3/[Ll]ibrary/metadata/
+[Mm]inimum3/[Gg]ame [Ll]evels/[Ll]ibrary/metadata/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -25,31 +29,34 @@
 *.pidb.meta
 
 # No user generated content; only codes and scripts..
-*.meta
-*.prefab
-*.asset
-*.mat
-*.fbx
-*.FBX
-*.psd
-*.shader
-*.physic[Mm]aterial
-*.flare
-*.tif
-*.tiff
-*.png
-*.jpg
-*.wav
-*.wave
-*.exr
-*.unity
-*.cubemap
-*.anim
-*.tga
-*.obj
-*.[Gg][Uu][Ii][Ss]kin
-*.controller
-*.otf
+#*.meta
+*.7z*
+*.prefab*
+*.asset*
+*.mat*
+*.[Mm]ax*
+*.fbx*
+*.FBX*
+*.psd*
+*.shader*
+*.physic[Mm]aterial*
+*.flare*
+*.tif*
+*.ttf*
+*.tiff*
+*.png*
+*.jpg*
+*.wav*
+*.wave*
+*.exr*
+*.unity*
+*.cubemap*
+*.anim*
+*.tga*
+*.obj*
+*.[Gg][Uu][Ii][Ss]kin*
+*.controller*
+*.otf*
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
