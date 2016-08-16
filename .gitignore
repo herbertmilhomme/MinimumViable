@@ -54,7 +54,7 @@
 *.wav*
 *.wave*
 *.exr*
-*.unity*
+# *.unity*
 *.cubemap*
 *.anim*
 *.tga*
