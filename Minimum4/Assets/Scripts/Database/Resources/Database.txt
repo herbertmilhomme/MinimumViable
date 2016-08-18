@@ -1,0 +1,30 @@
+﻿using UnityEngine;
+using System.Collections;
+//SQL
+using Mono.Data.SqliteClient;
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
+
+public class Database : MonoBehaviour {
+	private string _constr = "URI=file:NPCMaster.db";
+	private IDbConnection _dbc;
+	private IDbCommand _dbcm;
+	private IDataReader _dbr;
+
+	_dbc = new SqliteConnection(_constr);
+	_dbc.Open();
+	_dbcm = _dbc.CreateCommand();
+	_dbcm.CommandText = "SELECT `id` FROM `npc` WHERE `name`='"+NPCname+"'";
+	_dbr = _dbcm.ExecuteReader();
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
