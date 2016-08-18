@@ -30,12 +30,12 @@ User loads the game via PC or Mac, and is given a screen where they can:
 ## 1.2 New Challenge
 Here Player is directed to choose either a) Play With Bots, or b) Play With People. If they choose to Play With Bots, they can then assign difficulty level and choose the map. They also need to choose between a 1v1 Game and a 2v2 game. If they choose to Play With People, server connection must be created. Once the button: “Start Game” is pressed (only the host can start it) the game goes to a load screen.
 
-## 1.3 Game Play
+## 1.3 Game ~~Play~~ Start
 Sweep through of the map via camera upon the dissipation of the Load Screen. The camera settles at an isometric view of the Player’s boat, and a countdown begins. We can hear engines revving and music will begin to play. Whether one player or two players, there will be two teams representing each side: the Coast Guard and the Bandits. They start 180-degrees from each other, each on one end of the map. 
 
 ```c#
-GameStart() //Sample
-{
+GameStart()	// Translated Paragraph above into gibberish 
+{		// Sample Script, to present semantic flow
   new Player = Player();
   Player.Spawn();
   new Enemy = Enemy();
@@ -43,29 +43,34 @@ GameStart() //Sample
   Camera.StartUpAnimation();
   Audio<Player>.Play(RevEngine);
   new CountdownTimer = CountdownTimer();
-  CountdownTimer.Timer(3 seconds);
-  CountdownTimer.Text("Start!");
+  var CdTimer = CountdownTimer.Timer(3 seconds);
+  foreach(var second in CdTimer)
+  {
+    Player<HUD>.Text = second.ToString() AS int;
+  }
+  Player<HUD>.Text("Start!");
 }
 ```
 
-# 2.0 Gameplay Basics 
+## 1.4 Gameplay Basics 
 
-## 2.1 The Interface
+# 2.0 The Interface
 The HUD is in development still, but will feature a mouse cursor that a) controls the direction the boat moves and b) can be used to click on an enemy boat to shoot at it automatically with each boat’s built-in mini-gun, or c) to collect a crate. The mouse will direct the boat’s movement, while the W key will control the boat’s engine. If W is not pressed, the boat will slow down to a stop. When an enemy boat is clicked on, whichever weapon was assigned to the boat is used on it automatically without aim. If a crate is clicked on, it begins the loading process (see 2.2) and collects the crate. 
 
-### User Input
+## 2.1 Gameplay Controls
 
+### 2.1a User Input 
 #### Movements
-- Throttle Up/Increase
-~~- Throttle Down/Decrease
-- Turn Left
-- Turn Right~~
+- Throttle Up/Increase Speed
+- ~~Throttle Down/Decrease Speed~~
+- ~~Turn Left~~
+- ~~Turn Right~~
 - Speed Boost
 
 #### Weapons/Fire
 - Aim
 - Fire
-- Action
+- Action? (Pick-Up Objective/Throw Objective)
 - Cycle Weapons Forward
 - Cycle Weapons Previous
 
@@ -75,9 +80,17 @@ The HUD is in development still, but will feature a mouse cursor that a) control
   - Background Music Volume
   - Sound Effects
 
-Didn’t mention inventory…confused about interface
- 
-~~Didn’t mention audio of boat when W is pressed~~
+### 2.1b [Default] User Controller
+#### Movements
+- W : Forward
+
+#### Weapons/Fire
+- Mouse-Move : Aim
+- Mouse1 : Fire
+- E : Action (Toggle Boolean?)
+
+> Didn’t mention inventory…confused about interface
+> ~~Didn’t mention audio of boat when W is pressed~~
 
 ## 2.2 The Package
 The Package is a crate that floats and bobs in the center of the map. The Bandits are the only ones who can initially collect it. Coast Guard can only wait until a Bandit boat picks it up. Once picked up, the Coast Guard should do everything in their power to stop the package from reaching the shore where the Bandit boat spawned, which is where it needs to get to unload the package and earn $500 & 1 Match Point.
@@ -88,9 +101,7 @@ The games will be quick, and 3 out of 5 Matches wins a Round. Each team (all or 
 ## 2.4 Weapons In Game
 While the Bandits move toward the package, the Coast Guard can collect guns and traps around the sides of the level. The Bandits will have to deal with them once the package is collected, as the Coast Guard must then go and destroy the boat holding it and steal it for themselves. The Bandits only get to collect new weapons after they collect the package. Once the package is collected, weapons in the water appear for the Bandits, so that the firefight – wherever it ends up on the map – is fair.
 
-To activate a weapon, you must be able to grab it from the Inventory and drag it to 
-
-your boat. We need to discuss how the Inventory and Game HUD are going to work.
+To activate a weapon, you must be able to grab it from the Inventory and drag it to your boat. We need to discuss how the Inventory and Game HUD are going to work.
 
 
 # 3.0 When Round Ends 
@@ -104,17 +115,17 @@ Once each Match (taking as little as 30 seconds to 1 minute each) is completed o
 ## 4.1 My Career Section
 The My Career section (found on the Main Menu) takes the player to statistics…
 
-List them here
+> List them here
 
 ## 4.2 New Account Section
 This is where new users sign up. It requires a Name, Email, and Password…
 
-What else does it need?
+> What else does it need?
 
 ## 4.3 Logging In Section
 This is where the user logs in using an existing account on our server…
 
-Email or username and password
+> Email or username and password
 
 
 # 5.0 Weapon Functions
@@ -152,6 +163,16 @@ We cannot expect to complete every feature and we cannot expect to have thought 
 # 9.0 Check List
 
 ## Programmers
- - [ ] ...
+ - [x] Movement 
+ - [ ] GUI Setup
 
 ## Visual Team
+ - [ ] GUI Layout (buttons, menu)
+ - [x] HUD Layout (Score, HP, Spd)
+
+## Concept Designers
+ - [ ] Readme/GDD
+   - [ ] Clean-up/Organize (Make User Friendly)
+   - [ ] Numerical Spreadsheet Values for Weaps
+   - [ ] Missing a Section for "Game Rules"
+   - [ ] More details on Coast Guard 
